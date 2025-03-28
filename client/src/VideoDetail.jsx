@@ -10,7 +10,7 @@ const VideoDetail = () => {
   useEffect(() => {
     const token = localStorage.getItem("authToken");
     axios
-      .get(`http://localhost:8080/videos/${id}`, {
+      .get(`https://sierra-kf9e.onrender.com/videos/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       })
       .then((res) => {
@@ -28,7 +28,7 @@ const VideoDetail = () => {
         <video width="350px"  controls>
           <source
           
-            src={`http://localhost:8080/${video.filePath
+            src={`https://sierra-kf9e.onrender.com/${video.filePath
               .replace(/\\/g, "/")
               .replace(/^\/+/, "")}`}
             type="video/mp4"

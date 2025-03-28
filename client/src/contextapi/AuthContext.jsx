@@ -7,21 +7,25 @@ export function AuthProvider({ children }) {
   const nav = useNavigate();
   const [user, setUser] = useState(null);
 
-  useEffect(()=>{
-    logout()
-  },[])
+  useEffect(() => {
+    setUser(null);
+    localStorage.removeItem("authToken");
+  }, []);
 
   const login = async (email, password) => {
     try {
-      const response = await axios.post("http://localhost:8080/login", {
-        email,
-        password,
-      });
-      const loggedInUser = response.data; 
+      const response = await axios.post(
+        "https://sierra-kf9e.onrender.com/login",
+        {
+          email,
+          password,
+        }
+      );
+      const loggedInUser = response.data;
       setUser(loggedInUser);
-      localStorage.setItem("authToken", loggedInUser.token); 
+      localStorage.setItem("authToken", loggedInUser.token);
       console.log("Login successful");
-      nav("/")
+      nav("/");
     } catch (error) {
       console.error("Login error:", error.response?.data || error.message);
     }
@@ -29,11 +33,14 @@ export function AuthProvider({ children }) {
 
   const signup = async (name, email, password) => {
     try {
-      const response = await axios.post("http://localhost:8080/register", {
-        name,
-        email,
-        password,
-      });
+      const response = await axios.post(
+        "https://sierra-kf9e.onrender.com/register",
+        {
+          name,
+          email,
+          password,
+        }
+      );
       const newUser = response.data;
       alert("Signup successful");
       nav("/login");
@@ -45,8 +52,8 @@ export function AuthProvider({ children }) {
 
   const logout = () => {
     setUser(null);
-    nav("/login")
-    localStorage.removeItem("authToken"); 
+    nav("/login");
+    localStorage.removeItem("authToken");
     alert("Logout successful");
   };
 

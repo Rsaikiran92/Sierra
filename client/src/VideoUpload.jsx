@@ -22,7 +22,7 @@ const VideoUpload = () => {
 
     try {
       const token = localStorage.getItem("authToken");
-      const res = await axios.post("http://localhost:8080/upload", formData, {
+      const res = await axios.post("https://sierra-kf9e.onrender.com//upload", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
           Authorization: `Bearer ${token}`,

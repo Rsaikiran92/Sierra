@@ -14,7 +14,7 @@ const VideoList = () => {
     const token = localStorage.getItem("authToken");
     axios
       .get(
-        `http://localhost:8080/videos?page=${currentPage}&limit=${videosPerPage}`,
+        `https://sierra-kf9e.onrender.com/videos?page=${currentPage}&limit=${videosPerPage}`,
         {
           headers: { Authorization: `Bearer ${token}` },
         }
@@ -51,7 +51,7 @@ const VideoList = () => {
           >
             <video width="500px" height="200px">
               <source
-                src={`http://localhost:8080/${video.filePath
+                src={`https://sierra-kf9e.onrender.com/${video.filePath
                   .replace(/\\/g, "/")
                   .replace(/^\/+/, "")}`}
                 type="video/mp4"
