@@ -1,0 +1,45 @@
+* {
+  margin: 0;
+  
+}
+
+body {
+  background: linear-gradient(
+    to bottom right,
+    #4a148c,
+    #d1c4e9,
+    #e2dbef,
+    #d1c4e9,
+    #4a148c
+  ); /* Dark-light-dark purple diagonally */
+}
+
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 20px;
+  background: linear-gradient(
+    to right,
+    #d8cdeb,
+    #bfa9f4
+  ); /* Light to dark purple */
+  color: white;
+}
+
+.navbar-left h1 {
+  margin: 0;
+}
+
+.navbar-right .btn {
+  margin-left: 10px;
+  padding: 5px 10px;
+  color: black;
+  background-color: white;
+  text-decoration: none;
+  border-radius: 5px;
+}
+
+.navbar-right .btn:hover {
+  background-color: #0056b3;
+}

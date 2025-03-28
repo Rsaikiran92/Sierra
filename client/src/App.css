@@ -1,0 +1,12 @@
+.main{
+  body {
+    background: linear-gradient(
+      to bottom right,
+      #4a148c,
+      #d1c4e9,
+      #e2dbef,
+      #d1c4e9,
+      #4a148c
+    ); /* Dark-light-dark purple diagonally */
+  }
+}
