@@ -12,13 +12,16 @@ const port = process.env.port || 8080;
 
 app.use(cors());
 app.use(express.json());
-app.use("/", userRouter);
-app.use("/uploads", express.static("uploads"));
-app.use("/", authMiddleware, videoRouter);
 
 app.get("/", (req, res) => {
   res.send("welcome to the server");
 });
+
+app.use("/", userRouter);
+app.use("/uploads", express.static("uploads"));
+app.use("/", authMiddleware, videoRouter);
+
+
 
 app.listen(port, async () => {
   try {
