@@ -4,7 +4,7 @@ const env = require("dotenv");
 const cors = require("cors");
 const { userRouter } = require("./routes/userRouter");
 const { videoRouter } = require("./routes/videoRouter");
-const { authMiddleware } = require("./middleware/AuthMiddleware.js");
+const { authMiddleware } = require("./middleware/authMiddleware.js");
 
 const app = express();
 env.config();
