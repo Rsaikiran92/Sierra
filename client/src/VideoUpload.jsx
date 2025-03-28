@@ -6,6 +6,7 @@ const VideoUpload = () => {
   const [video, setVideo] = useState(null);
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
+  const [isLoading, setIsLoading] = useState(false); // Add loading state
   const fileInputRef = useRef(null); // Add ref for file input
 
   const handleUpload = async (e) => {
@@ -21,13 +22,18 @@ const VideoUpload = () => {
     formData.append("description", description);
 
     try {
+      setIsLoading(true); // Set loading to true
       const token = localStorage.getItem("authToken");
-      const res = await axios.post("https://sierra-kf9e.onrender.com//upload", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-          Authorization: `Bearer ${token}`,
-        },
-      });
+      const res = await axios.post(
+        "https://sierra-kf9e.onrender.com/upload",
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+            Authorization: `Bearer ${token}`,
+          },
+        }
+      );
       alert("Video uploaded successfully!");
       setVideo(null); // Clear video input
       fileInputRef.current.value = ""; // Reset file input
@@ -36,6 +42,8 @@ const VideoUpload = () => {
     } catch (err) {
       console.error(err);
       alert("Upload failed");
+    } finally {
+      setIsLoading(false); // Set loading to false
     }
   };
 
@@ -64,7 +72,9 @@ const VideoUpload = () => {
             onChange={(e) => setDescription(e.target.value)}
             required
           />
-          <button type="submit">Upload</button>
+          <button type="submit" disabled={isLoading}>
+            {isLoading ? "Uploading..." : "Upload"}
+          </button>
         </form>
       </div>
     </div>
